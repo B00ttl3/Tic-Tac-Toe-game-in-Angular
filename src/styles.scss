@@ -27,7 +27,7 @@
   --transition-time: 0.3s;
 }
 
-.dark-theme {
+body.dark-theme {
   --bg-color: #1a1a1a;
   --text-color: #f0f0f0;
   --card-bg: #2a2a2a;
@@ -44,6 +44,19 @@
   --symbol-color: white;
   --winner-color: #4caf50;
   --tie-color: #2196f3;
+}
+
+/* Direct style overrides for dark mode */
+body.dark-theme header h1 {
+  color: white !important;
+}
+
+body.dark-theme footer p {
+  color: white !important;
+}
+
+body.dark-theme .symbol {
+  color: white !important;
 }
 
 body {
@@ -74,6 +87,8 @@ button {
 .symbol {
   font-weight: bold;
   font-size: 24px;
+  color: var(--symbol-color);
+  transition: color var(--transition-time);
 }
 
 .theme-toggle {

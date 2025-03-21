@@ -6,8 +6,8 @@
 }
 
 header {
-  background-color: var(--header-bg);
-  color: var(--header-text);
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
   padding: 1rem;
   text-align: center;
   box-shadow: 0 2px 5px var(--shadow-color);
@@ -17,6 +17,13 @@ header {
 h1 {
   margin: 0;
   font-size: 2rem;
+  color: var(--header-text) !important;
+  transition: color var(--transition-time);
+}
+
+/* Force white title in dark mode */
+body.dark-theme header h1 {
+  color: white !important;
 }
 
 main {
@@ -39,11 +46,21 @@ main {
 }
 
 footer {
-  background-color: var(--header-bg);
-  color: var(--header-text);
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
   padding: 1rem;
   text-align: center;
   transition: background-color var(--transition-time), color var(--transition-time);
+}
+
+footer p {
+  color: var(--header-text) !important;
+  transition: color var(--transition-time);
+}
+
+/* Force white footer text in dark mode */
+body.dark-theme footer p {
+  color: white !important;
 }
 
 @media (max-width: 600px) {

@@ -17,7 +17,7 @@
 
 .player-symbol {
   font-weight: bold;
-  color: var(--player-symbol);
+  color: var(--symbol-color);
   transition: color var(--transition-time);
 }
 
@@ -72,14 +72,15 @@
   font-weight: bold;
   color: var(--symbol-color);
   transition: color var(--transition-time);
-  
-  &.x {
-    color: var(--symbol-color);
-  }
-  
-  &.o {
-    color: var(--symbol-color);
-  }
+}
+
+/* Direct force of styles for dark mode */
+body.dark-theme .symbol {
+  color: white;
+}
+
+body:not(.dark-theme) .symbol {
+  color: black;
 }
 
 .controls {

@@ -1,4 +1,4 @@
-import { Injectable, Renderer2, RendererFactory2, Inject, PLATFORM_ID } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -8,15 +8,10 @@ import { isPlatformBrowser } from '@angular/common';
 export class ThemeService {
   private darkMode = new BehaviorSubject<boolean>(false);
   darkMode$ = this.darkMode.asObservable();
-  private renderer: Renderer2;
   private storageKey = 'tic_tac_toe_dark_mode';
   private isBrowser: boolean;
 
-  constructor(
-    rendererFactory: RendererFactory2,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.loadSavedTheme();
   }
@@ -26,6 +21,20 @@ export class ThemeService {
     this.darkMode.next(newValue);
     this.updateBodyClass(newValue);
     this.saveTheme(newValue);
+    
+    // Force refresh of styles
+    if (this.isBrowser) {
+      setTimeout(() => {
+        console.log('Forcing style refresh for dark mode:', newValue);
+        if (newValue) {
+          document.body.style.setProperty('--header-text', '#ffffff');
+          document.body.style.setProperty('--symbol-color', '#ffffff');
+        } else {
+          document.body.style.setProperty('--header-text', 'white');
+          document.body.style.setProperty('--symbol-color', 'black');
+        }
+      }, 10);
+    }
   }
 
   private loadSavedTheme(): void {
@@ -40,6 +49,12 @@ export class ThemeService {
       const isDarkMode = savedTheme === 'true';
       this.darkMode.next(isDarkMode);
       this.updateBodyClass(isDarkMode);
+      
+      // Set initial styles
+      if (isDarkMode) {
+        document.body.style.setProperty('--header-text', '#ffffff');
+        document.body.style.setProperty('--symbol-color', '#ffffff');
+      }
     } catch (e) {
       // If localStorage is not available, use default light theme
       this.darkMode.next(false);
@@ -61,9 +76,9 @@ export class ThemeService {
     if (!this.isBrowser) return;
     
     if (isDarkMode) {
-      this.renderer.addClass(document.body, 'dark-theme');
+      document.body.classList.add('dark-theme');
     } else {
-      this.renderer.removeClass(document.body, 'dark-theme');
+      document.body.classList.remove('dark-theme');
     }
   }
 }
