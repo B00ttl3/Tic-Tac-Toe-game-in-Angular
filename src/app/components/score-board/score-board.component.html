@@ -1,0 +1,18 @@
+<div class="scoreboard">
+  <h2>Scoreboard</h2>
+  <div class="score-container">
+    <div class="score-item">
+      <div class="player">Player X</div>
+      <div class="score">{{ scores.X }}</div>
+    </div>
+    <div class="score-item">
+      <div class="player">Player O</div>
+      <div class="score">{{ scores.O }}</div>
+    </div>
+    <div class="score-item">
+      <div class="player">Ties</div>
+      <div class="score">{{ scores.ties }}</div>
+    </div>
+  </div>
+  <button class="reset-scores-button" (click)="resetScores()">Reset Scores</button>
+</div>

@@ -1,59 +1,55 @@
-# TicTacToe
+# Angular Tic-Tac-Toe Game
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+A simple but elegant Tic-Tac-Toe game built with Angular.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Responsive game board centered on the screen
+- Clear X and O markers in black color
+- Score tracking for both players and ties
+- Reset game and score functionality
+- Modern UI with smooth transitions
 
-```bash
-ng serve
-```
+## Screenshots
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Game in action with player X and O
+- Responsive layout that works on mobile and desktop
 
-## Code scaffolding
+## How to Run
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clone this repository
+2. Navigate to the project directory
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Start the development server:
+   ```
+   ng serve
+   ```
+5. Open your browser and navigate to `http://localhost:4200/`
 
-```bash
-ng generate component component-name
-```
+## How to Play
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. The game starts with player X
+2. Players take turns clicking on the grid to place their mark
+3. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins
+4. If all cells are filled and no player has won, the game ends in a tie
+5. Use the "Reset Game" button to start a new game
+6. Use the "Reset Scores" button to reset the scoreboard
 
-```bash
-ng generate --help
-```
+## Technologies Used
 
-## Building
+- Angular 19
+- TypeScript
+- SCSS for styling
+- RxJS for state management
 
-To build the project run:
+## Project Structure
 
-```bash
-ng build
-```
+- `app.component`: Main application component
+- `game-board.component`: Game board UI and game play interactions
+- `score-board.component`: Score tracking and display
+- `game.service`: Game logic, state management, and score tracking
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Enjoy the game!

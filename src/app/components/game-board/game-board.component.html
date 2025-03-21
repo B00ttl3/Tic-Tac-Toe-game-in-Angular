@@ -1,0 +1,30 @@
+<div class="game-container">
+  <div class="status-info">
+    <div *ngIf="!gameOver" class="current-player">
+      Current Player: <span class="player-symbol">{{ currentPlayer }}</span>
+    </div>
+    <div *ngIf="gameOver && winner" class="winner-info">
+      Winner: <span class="player-symbol">{{ winner }}</span>
+    </div>
+    <div *ngIf="gameOver && !winner" class="tie-info">
+      Game ended in a tie!
+    </div>
+  </div>
+
+  <div class="game-board">
+    <div class="board-row" *ngFor="let row of [0, 1, 2]">
+      <div class="board-cell" 
+           *ngFor="let col of [0, 1, 2]" 
+           (click)="makeMove(row * 3 + col)"
+           [class.disabled]="gameOver || board[row * 3 + col] !== ''">
+        <span class="symbol" [class.x]="board[row * 3 + col] === 'X'" [class.o]="board[row * 3 + col] === 'O'">
+          {{ board[row * 3 + col] }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="reset-button" (click)="resetGame()">Reset Game</button>
+  </div>
+</div>
